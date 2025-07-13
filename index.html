@@ -129,13 +129,33 @@
       setTimeout(() => {
         switch (section) {
           case 'home':
-            html = `<section aria-labelledby="home-title"><h2 id="home-title">Welcome</h2><p>This is Dee’s personal space on the web.</p></section>`; break;
+            html = `<section aria-labelledby="home-title"><h2 id="home-title">Welcome</h2><p>This is Dee’s personal space on the web.</p></section>`;
+            break;
           case 'portfolio':
-            html = `<section aria-labelledby="portfolio-title"><h2 id="portfolio-title">Portfolio</h2><p>Some of my ongoing and past projects:</p><ul><li>Web-based portfolio design</li><li>CRM tools and automation</li><li>Creative writing & digital storytelling</li></ul></section>`; break;
+            html = `<section aria-labelledby="portfolio-title"><h2 id="portfolio-title">Portfolio</h2><p>Some of my ongoing and past projects:</p><ul><li>Web-based portfolio design</li><li>CRM tools and automation</li><li>Creative writing & digital storytelling</li></ul></section>`;
+            break;
           case 'resume':
-            html = `<section aria-labelledby="resume-title"><h2 id="resume-title">Resume</h2><h3>Experience</h3><ul><li>Technical Support - 3 years</li><li>Executive Assistant - 1 year</li><li>Virtual Assistant - CRM, data entry, task coordination</li></ul><h3>Skills</h3><ul><li>Customer Service</li><li>Administrative Support</li><li>Creative Thinking</li><li>Basic Web Design</li></ul><p><a href="https://drive.google.com/file/d/1XbsfSEU6G0ficvuXdVCeJWmcca4wyVWv/view?usp=drive_link" target="_blank" rel="noopener">Download my resume (PDF)</a></p></section>`; break;
+            html = `<section aria-labelledby="resume-title">
+                      <h2 id="resume-title">Resume</h2>
+                      <h3>Experience</h3>
+                      <ul>
+                        <li>Technical Support - 3 years</li>
+                        <li>Executive Assistant - 1 year</li>
+                        <li>Virtual Assistant - CRM, data entry, task coordination</li>
+                      </ul>
+                      <h3>Skills</h3>
+                      <ul>
+                        <li>Customer Service</li>
+                        <li>Administrative Support</li>
+                        <li>Creative Thinking</li>
+                        <li>Basic Web Design</li>
+                      </ul>
+                      <p><a href="resume.pdf" target="_blank" rel="noopener noreferrer">View Resume (PDF)</a></p>
+                    </section>`;
+            break;
           case 'contact':
-            html = `<section aria-labelledby="contact-title"><h2 id="contact-title">Contact</h2><p>Email: <a href="mailto:junabia04@gmail.com">junabia04@gmail.com</a></p><p>Facebook: <a href="https://facebook.com/deeknight05" target="_blank">facebook.com/deeknight05</a></p></section>`; break;
+            html = `<section aria-labelledby="contact-title"><h2 id="contact-title">Contact</h2><p>Email: <a href="mailto:junabia04@gmail.com">junabia04@gmail.com</a></p><p>Facebook: <a href="https://facebook.com/deeknight05" target="_blank">facebook.com/deeknight05</a></p></section>`;
+            break;
           default:
             html = `<section><p>Section not found.</p></section>`;
         }
@@ -146,13 +166,18 @@
         setTimeout(() => { observeScrollFade(); }, 200);
       }, 150);
     }
+
     const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
     }, { threshold: 0.1 });
+
     function observeScrollFade() {
       const elements = document.querySelectorAll('.scroll-fade');
       elements.forEach(el => observer.observe(el));
     }
+
     window.onload = () => { loadContent('home'); };
   </script>
 </head>
@@ -163,12 +188,14 @@
       <span>Jhondie Unabia</span>
     </div>
   </header>
+
   <nav role="navigation">
     <button onclick="loadContent('home')" data-section="home" aria-label="Go to Home section" role="link">Home</button>
     <button onclick="loadContent('portfolio')" data-section="portfolio" aria-label="Go to Portfolio section" role="link">Portfolio</button>
     <button onclick="loadContent('resume')" data-section="resume" aria-label="Go to Resume section" role="link">Resume</button>
     <button onclick="loadContent('contact')" data-section="contact" aria-label="Go to Contact section" role="link">Contact</button>
   </nav>
+
   <div id="loader">Loading...</div>
   <main id="main-content" role="main"></main>
   <footer role="contentinfo">&copy; 2025 Dee. All rights reserved.</footer>
